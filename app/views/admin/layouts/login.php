@@ -8,12 +8,13 @@
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- icheck bootstrap -->
-    <link rel="stylesheet" href="public/vendor/adminlte/plugins/icheck-bootstrap.min.css">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <!-- icheck bootstrap -->
+    <base href="<?= BASE_URL ?>">
+    <link rel="stylesheet" href="app/libs/adminlte/plugins/icheck-bootstrap.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="public/vendor/adminlte/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="app/libs/adminlte/dist/css/adminlte.min.css">
 </head>
 
 <body class="hold-transition login-page">
@@ -53,11 +54,11 @@
     <!-- /.login-box -->
 
     <!-- jQuery -->
-    <script src="public/vendor/adminlte/plugins/js/jquery.min.js"></script>
+    <script src="app/libs/adminlte/plugins/js/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
-    <script src="public/vendor/adminlte/plugins/js/bootstrap.bundle.min.js"></script>
+    <script src="app/libs/adminlte/plugins/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
-    <script src="public/vendor/adminlte/dist/js/adminlte.min.js"></script>
+    <script src="app/libs/adminlte/dist/js/adminlte.min.js"></script>
 </body>
 
 </html>

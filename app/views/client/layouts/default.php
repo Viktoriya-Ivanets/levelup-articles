@@ -8,13 +8,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Articles | All articles</title>
+    <title><?= $title ?></title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <!-- Theme style -->
+    <base href="<?= BASE_URL ?>">
     <link rel="stylesheet" href="app/libs/adminlte/dist/css/adminlte.min.css">
 </head>
 
@@ -26,7 +27,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- /.navbar -->
 
         <!-- Content Wrapper. Contains page content -->
-        <?php include_once('app/views/client/pages/article.php') ?>
+        <?php include_once('app/views/' . $view . '/pages/' . $page . '.php') ?>
         <!-- Footer -->
         <?php include_once('app/views/client/common/footer.php') ?>
     </div>

@@ -11,6 +11,7 @@
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <!-- Theme style -->
+    <base href="<?= BASE_URL ?>">
     <link rel="stylesheet" href="app/libs/adminlte/dist/css/adminlte.min.css">
     <!-- DataTables -->
     <link rel="stylesheet" href="app/libs/adminlte/plugins/css/dataTables.bootstrap4.min.css">
@@ -29,7 +30,7 @@
         <?php include_once('app/views/admin/common/menu.php') ?>
 
         <!-- Content Wrapper. Contains page content -->
-        <?php include_once('app/views/admin/pages/article_form.php') ?>
+        <?php include_once('app/views/' . $view . '/pages/' . $page . '.php') ?>
         <!-- /.content-wrapper -->
 
         <?php include_once('app/views/admin/common/footer.php') ?>
