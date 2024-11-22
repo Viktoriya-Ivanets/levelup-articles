@@ -1,0 +1,13 @@
+<?php
+const BASE_URL = 'http://localhost:8084/ha60/';
+const UTILS_PATH = 'app' . DIRECTORY_SEPARATOR . 'utils' . DIRECTORY_SEPARATOR;
+const CORE_PATH = 'app' . DIRECTORY_SEPARATOR . 'core' . DIRECTORY_SEPARATOR;
+const CONTROLLER_PATH = 'app' . DIRECTORY_SEPARATOR . 'controllers' . DIRECTORY_SEPARATOR;
+const MODEL_PATH = 'app' . DIRECTORY_SEPARATOR . 'models' . DIRECTORY_SEPARATOR;
+
+const CLASS_PATHS = [
+    UTILS_PATH,
+    CORE_PATH,
+    CONTROLLER_PATH,
+    MODEL_PATH,
+];
