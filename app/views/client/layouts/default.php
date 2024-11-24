@@ -15,32 +15,31 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <!-- Theme style -->
-    <base href="<?= BASE_URL ?>">
-    <link rel="stylesheet" href="app/libs/adminlte/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="<?= ADMIN_LTE_DIST_CSS . 'adminlte.min.css' ?> ">
 </head>
 
 <body class="hold-transition layout-top-nav">
     <div class="wrapper">
 
         <!-- Navbar -->
-        <?php include_once('app/views/client/common/navbar.php') ?>
+        <?php include_once(CLIENT_COMMON_VIEWS . 'navbar.php') ?>
         <!-- /.navbar -->
 
         <!-- Content Wrapper. Contains page content -->
-        <?php include_once('app/views/' . $view . '/pages/' . $page . '.php') ?>
+        <?php include_once(VIEWS . $view . '/pages/' . $page . '.php') ?>
         <!-- Footer -->
-        <?php include_once('app/views/client/common/footer.php') ?>
+        <?php include_once(CLIENT_COMMON_VIEWS . 'footer.php') ?>
     </div>
     <!-- ./wrapper -->
 
     <!-- REQUIRED SCRIPTS -->
 
     <!-- jQuery -->
-    <script src="app/libs/adminlte/plugins/js/jquery.min.js"></script>
+    <script src="<?= ADMIN_LTE_PLUGINS_JS . 'jquery.min.js' ?>"></script>
     <!-- Bootstrap 4 -->
-    <script src="app/libs/adminlte/plugins/js/bootstrap.bundle.min.js"></script>
+    <script src="<?= ADMIN_LTE_PLUGINS_JS . 'bootstrap.bundle.min.js' ?>"></script>
     <!-- AdminLTE App -->
-    <script src="app/libs/adminlte/dist/js/adminlte.min.js"></script>
+    <script src="<?= ADMIN_LTE_DIST_JS . 'adminlte.min.js' ?>"></script>
 </body>
 
 </html>

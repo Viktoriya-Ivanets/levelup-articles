@@ -11,10 +11,9 @@
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <!-- icheck bootstrap -->
-    <base href="<?= BASE_URL ?>">
-    <link rel="stylesheet" href="app/libs/adminlte/plugins/icheck-bootstrap.min.css">
+    <link rel="stylesheet" href="<?= ADMIN_LTE_PLUGINS_CSS . 'icheck-bootstrap.min.css' ?>">
     <!-- Theme style -->
-    <link rel="stylesheet" href="app/libs/adminlte/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="<?= ADMIN_LTE_DIST_CSS . 'adminlte.min.css' ?>">
 </head>
 
 <body class="hold-transition login-page">
@@ -54,11 +53,11 @@
     <!-- /.login-box -->
 
     <!-- jQuery -->
-    <script src="app/libs/adminlte/plugins/js/jquery.min.js"></script>
+    <script src="<?= ADMIN_LTE_PLUGINS_JS . 'jquery.min.js' ?>"></script>
     <!-- Bootstrap 4 -->
-    <script src="app/libs/adminlte/plugins/js/bootstrap.bundle.min.js"></script>
+    <script src="<?= ADMIN_LTE_PLUGINS_JS . 'bootstrap.bundle.min.js' ?>"></script>
     <!-- AdminLTE App -->
-    <script src="app/libs/adminlte/dist/js/adminlte.min.js"></script>
+    <script src="<?= ADMIN_LTE_DIST_JS . 'adminlte.min.js' ?>"></script>
 </body>
 
 </html>

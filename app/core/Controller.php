@@ -13,7 +13,7 @@ class Controller
     protected function view(string $view, string $layout, ?string $page = null, array $data = []): never
     {
         extract($data);
-        require_once "app/views/{$view}/layouts/{$layout}.php";
+        require_once VIEWS . "{$view}/layouts/{$layout}.php";
         exit();
     }
 }
