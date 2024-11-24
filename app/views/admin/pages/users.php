@@ -40,18 +40,20 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Internet Explorer</td>
-                                        <td>2024-11-20 14:30:35</td>
-                                        <td>2024-11-21 14:30:35</td>
-                                        <td>
-                                            <div class="d-flex justify-content-start">
-                                                <button class="btn btn-sm btn-primary mr-2"> <span class="fa-solid fa-pen mr-2"></span> Edit</button>
-                                                <button class="btn btn-sm btn-danger"> <span class="fa-solid fa-trash mr-2"></span> Delete</button>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                    <?php foreach ($users as $user): ?>
+                                        <tr>
+                                            <td><?= $user['id'] ?></td>
+                                            <td><?= $user['login'] ?></td>
+                                            <td><?= $user['created_at'] ?></td>
+                                            <td><?= $user['updated_at'] ?></td>
+                                            <td>
+                                                <div class="d-flex justify-content-start">
+                                                    <button class="btn btn-sm btn-primary mr-2"> <span class="fa-solid fa-pen mr-2"></span> Edit</button>
+                                                    <a href="<?= BASE_URL . 'admin/users/delete/' . $user['id'] ?>"><button class="btn btn-sm btn-danger"> <span class="fa-solid fa-trash mr-2"></span> Delete</button></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
                                 </tbody>
                             </table>
                         </div>

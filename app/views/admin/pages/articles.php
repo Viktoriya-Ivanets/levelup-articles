@@ -34,7 +34,7 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Title</th>
-                                        <th>Text</th>
+                                        <th>Content</th>
                                         <th>Author</th>
                                         <th>Created at</th>
                                         <th>Updated at</th>
@@ -42,20 +42,22 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Internet Explorer</td>
-                                        <td>Win 95+</td>
-                                        <td>Ababa</td>
-                                        <td>2024-11-20 14:30:35</td>
-                                        <td>2024-11-21 14:30:35</td>
-                                        <td>
-                                            <div class="d-flex justify-content-start">
-                                                <button class="btn btn-sm btn-primary mr-2"> <span class="fa-solid fa-pen mr-2"></span> Edit</button>
-                                                <button class="btn btn-sm btn-danger"> <span class="fa-solid fa-trash mr-2"></span> Delete</button>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                    <?php foreach ($articles as $article): ?>
+                                        <tr>
+                                            <td><?= $article['id'] ?></td>
+                                            <td><?= $article['title'] ?></td>
+                                            <td><?= $article['content'] ?></td>
+                                            <td><?= $article['user'] ?></td>
+                                            <td><?= $article['created_at'] ?></td>
+                                            <td><?= $article['updated_at'] ?></td>
+                                            <td>
+                                                <div class="d-flex justify-content-start">
+                                                    <button class="btn btn-sm btn-primary mr-2"> <span class="fa-solid fa-pen mr-2"></span> Edit</button>
+                                                    <a href="<?= BASE_URL . 'admin/articles/delete/' . $article['id'] ?>"><button class="btn btn-sm btn-danger"> <span class="fa-solid fa-trash mr-2"></span> Delete</button></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
                                 </tbody>
                             </table>
                         </div>

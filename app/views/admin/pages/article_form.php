@@ -25,27 +25,49 @@
                     <!-- general form elements -->
                     <div class="card card-primary">
                         <div class="card-header text-center">
-                            <h3 class="card-title"> <?= $name . ' ' . $id ?></h3>
+                            <h3 class="card-title"> <?= $name . ' ' . $article['title'] ?></h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form>
-                            <div class="card-body">
-                                <div class="form-group">
-                                    <label for="title">Title</label>
-                                    <input type="text" name="title" class="form-control" id="title" placeholder="Enter article title">
+                        <?php if (!isset($article)): ?>
+                            <form action="<?= BASE_URL . 'admin/articles/store' ?>" method="post">
+                                <div class="card-body">
+                                    <input type="hidden" name="userId" value="14">
+                                    <div class="form-group">
+                                        <label for="title">Title</label>
+                                        <input type="text" name="title" class="form-control" id="title" placeholder="Enter article title">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Content</label>
+                                        <textarea name="content" class="form-control" rows="3" placeholder="Enter text of article..."></textarea>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label>Text</label>
-                                    <textarea name="text" class="form-control" rows="3" placeholder="Enter text of article..."></textarea>
-                                </div>
-                            </div>
-                            <!-- /.card-body -->
+                                <!-- /.card-body -->
 
-                            <div class="card-footer">
-                                <button type="submit" class="btn btn-primary w-100">Submit</button>
-                            </div>
-                        </form>
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-primary w-100">Submit</button>
+                                </div>
+                            </form>
+                        <?php else: ?>
+                            <form action="<?= BASE_URL . 'admin/articles/update' ?>" method="post">
+                                <div class="card-body">
+                                    <input type="hidden" name="id" value="<?= $article['id'] ?>">
+                                    <div class="form-group">
+                                        <label for="title">Title</label>
+                                        <input type="text" name="title" class="form-control" id="title" value="<?= $article['title'] ?>" placeholder=" Enter article title">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Content</label>
+                                        <textarea name="content" class="form-control" rows="3" placeholder="Enter text of article..."><?= $article['content'] ?></textarea>
+                                    </div>
+                                </div>
+                                <!-- /.card-body -->
+
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-primary w-100">Submit</button>
+                                </div>
+                            </form>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
