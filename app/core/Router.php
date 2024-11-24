@@ -13,6 +13,7 @@ class Router
      */
     public static function add($route, $params = [])
     {
+        $route = '#^' . $route . '$#';
         self::$routes[$route] = $params;
     }
 
@@ -25,7 +26,7 @@ class Router
     private function match($url)
     {
         foreach (self::$routes as $route => $params) {
-            if (preg_match("~$route~", $url, $matches)) {
+            if (preg_match($route, $url, $matches)) {
                 $this->params = $params;
                 if (!empty($matches[1])) {
                     $this->params['id'] = $matches[1];
@@ -43,6 +44,7 @@ class Router
      */
     public function dispatch($url)
     {
+        $url = str_replace(BASE_URL, '', $url);
         $url = trim($url, '/');
 
         if ($this->match($url)) {
