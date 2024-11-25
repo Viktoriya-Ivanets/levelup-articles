@@ -35,12 +35,17 @@
                                     <input type="hidden" name="userId" value="<?= $userId ?>">
                                     <div class="form-group">
                                         <label for="title">Title</label>
-                                        <input type="text" name="title" class="form-control" id="title" placeholder="Enter article title">
+                                        <input type="text" name="title" class="form-control" id="title" value="<?= $oldInput['title'] ?>" placeholder="Enter article title">
                                     </div>
                                     <div class="form-group">
                                         <label>Content</label>
-                                        <textarea name="content" class="form-control" rows="3" placeholder="Enter text of article..."></textarea>
+                                        <textarea name="content" class="form-control" rows="3" placeholder="Enter text of article..."><?= $oldInput['content'] ?></textarea>
                                     </div>
+                                    <?php if (isset($errors)): ?>
+                                        <?php foreach ($errors as $error): ?>
+                                            <div class="text-danger"><?= $error ?></div>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
                                 </div>
                                 <!-- /.card-body -->
 
@@ -63,6 +68,11 @@
                                         <label>Content</label>
                                         <textarea name="content" class="form-control" rows="3" placeholder="Enter text of article..."><?= $article['content'] ?></textarea>
                                     </div>
+                                    <?php if (isset($errors)): ?>
+                                        <?php foreach ($errors as $error): ?>
+                                            <div class="text-danger"><?= $error ?></div>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
                                 </div>
                                 <!-- /.card-body -->
 
