@@ -3,6 +3,22 @@
 class Helpers
 {
     /**
+     * Create default user in the system;
+     * @return void
+     */
+    public static function addDefaultUser(): void
+    {
+        $userModel = new User();
+        if (empty($userModel->getAll())) {
+            $userModel->create([
+                'login' => 'admin',
+                'password' => password_hash('admin', PASSWORD_DEFAULT),
+                'created_at' => Helpers::convertToUTC(date('Y-m-d H:i:s')),
+                'updated_at' => Helpers::convertToUTC(date('Y-m-d H:i:s'))
+            ]);
+        }
+    }
+    /**
      * Convert date in UTC before adding to DB
      * @param string $date
      * @return string
