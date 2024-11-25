@@ -67,4 +67,28 @@ class Router
             echo "Page not found!";
         }
     }
+
+    /**
+     * Generates a URL for the specified route.
+     *
+     * @param string $route The route for which to generate the URL.
+     * @return string The generated URL.
+     */
+    public static function url(string $route = ''): string
+    {
+        return BASE_URL . $route;
+    }
+
+    /**
+     * Redirects the user to the specified URL.
+     *
+     * @param string $url The URL to redirect to.
+     * @return never
+     */
+    public static function redirect(string $url): never
+    {
+        $url = self::url($url);
+        header('Location: ' . $url);
+        exit();
+    }
 }
