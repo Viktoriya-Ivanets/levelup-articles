@@ -45,6 +45,9 @@
                     <div class="row">
                         <div class="col-12">
                             <button type="submit" class="btn btn-primary btn-block">Login</button>
+                            <a href="<?= Router::url() ?>">
+                                <div class="btn btn-danger w-100 mt-2">Back</div>
+                            </a>
                         </div>
                         <!-- /.col -->
                     </div>

@@ -46,6 +46,9 @@
 
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-primary w-100">Submit</button>
+                                    <a href="<?= Router::url('admin/articles') ?>">
+                                        <div class="btn btn-danger w-100 mt-2">Cancel</div>
+                                    </a>
                                 </div>
                             </form>
                         <?php else: ?>
@@ -65,6 +68,9 @@
 
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-primary w-100">Submit</button>
+                                    <a href="<?= Router::url('admin/articles') ?>">
+                                        <div class="btn btn-danger w-100 mt-2">Cancel</div>
+                                    </a>
                                 </div>
                             </form>
                         <?php endif; ?>
