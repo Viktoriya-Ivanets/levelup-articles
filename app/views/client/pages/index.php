@@ -19,30 +19,34 @@
                 <div class="col-lg-6 col-md-6">
                     <?php foreach ($articles as $article): ?>
                         <?php if ($article['id'] % 2 !== 0): ?>
-                            <div class="card card-primary card-outline">
-                                <div class="card-header">
-                                    <h4 class="m-0"><?= $article['title'] ?></h4>
+                            <a href="<?= Router::url('article/' . $article['id']) ?>">
+                                <div class="card card-primary card-outline">
+                                    <div class="card-header">
+                                        <h4 class="m-0"><?= $article['title'] ?></h4>
+                                    </div>
+                                    <div class="card-body d-flex justify-content-between text-primary w-100 pt-2 pb-2 pl-4">
+                                        <div class="w-50"><?= $article['user'] ?></div>
+                                        <div class="w-50 text-right"><?= $article['created_at'] ?></div>
+                                    </div>
                                 </div>
-                                <div class="card-body d-flex justify-content-between text-primary w-100 pt-2 pb-2 pl-4">
-                                    <div class="w-50"><?= $article['user'] ?></div>
-                                    <div class="w-50 text-right"><?= $article['created_at'] ?></div>
-                                </div>
-                            </div>
+                            </a>
                         <?php endif; ?>
                     <?php endforeach; ?>
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <?php foreach ($articles as $article): ?>
                         <?php if ($article['id'] % 2 === 0): ?>
-                            <div class="card card-primary card-outline">
-                                <div class="card-header">
-                                    <h4 class="m-0"><?= $article['title'] ?></h4>
+                            <a href="<?= Router::url('article/' . $article['id']) ?>">
+                                <div class="card card-primary card-outline">
+                                    <div class="card-header">
+                                        <h4 class="m-0"><?= $article['title'] ?></h4>
+                                    </div>
+                                    <div class="card-body d-flex justify-content-between text-primary w-100 pt-2 pb-2 pl-4">
+                                        <div class="w-50"><?= $article['user'] ?></div>
+                                        <div class="w-50 text-right"><?= $article['created_at'] ?></div>
+                                    </div>
                                 </div>
-                                <div class="card-body d-flex justify-content-between text-primary w-100 pt-2 pb-2 pl-4">
-                                    <div class="w-50"><?= $article['user'] ?></div>
-                                    <div class="w-50 text-right"><?= $article['created_at'] ?></div>
-                                </div>
-                            </div>
+                            </a>
                         <?php endif; ?>
                     <?php endforeach; ?>
                 </div>

@@ -22,7 +22,7 @@
             <h1 class="card-header text-center">Article<b>Admin</b></h1>
             <div class="card-body">
                 <p class="login-box-msg">Login to Administration Panel</p>
-                <form action="<?= BASE_URL . 'login' ?>" method="post">
+                <form action="<?= Router::url('login') ?>" method="post">
                     <div class="input-group mb-3">
                         <input type="text" name="login" class="form-control" placeholder="Login">
                         <div class="input-group-append">

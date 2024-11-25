@@ -8,7 +8,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="<?= Router::url('admin') ?>">Home</a></li>
                         <li class="breadcrumb-item active">Users</li>
                     </ol>
                 </div>
@@ -24,7 +24,7 @@
                     <div class="card">
                         <!-- Card Header -->
                         <div class="card-header">
-                            <button class="btn btn-primary">Add user</button>
+                            <a href="<?= Router::url('admin/users/add') ?>"> <button class="btn btn-primary">Add user</button></a>
                         </div>
 
                         <!-- Card Body -->
@@ -48,8 +48,8 @@
                                             <td><?= $user['updated_at'] ?></td>
                                             <td>
                                                 <div class="d-flex justify-content-start">
-                                                    <button class="btn btn-sm btn-primary mr-2"> <span class="fa-solid fa-pen mr-2"></span> Edit</button>
-                                                    <a href="<?= BASE_URL . 'admin/users/delete/' . $user['id'] ?>"><button class="btn btn-sm btn-danger"> <span class="fa-solid fa-trash mr-2"></span> Delete</button></a>
+                                                    <a href="<?= Router::url('admin/users/edit/' . $user['id']) ?>"><button class="btn btn-sm btn-primary mr-2"> <span class="fa-solid fa-pen mr-2"></span> Edit</button></a>
+                                                    <a href="<?= Router::url('admin/users/delete/' . $user['id']) ?>"><button class="btn btn-sm btn-danger"> <span class="fa-solid fa-trash mr-2"></span> Delete</button></a>
                                                 </div>
                                             </td>
                                         </tr>

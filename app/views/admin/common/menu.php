@@ -1,6 +1,6 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index.php" class="brand-link">
+    <a href="<?= Router::url('admin') ?>" class="brand-link">
         <img src="<?= PUBLIC_IMAGES . 'AdminLTELogo.png' ?>" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">ArticleAdmin</span>
     </a>
@@ -13,8 +13,8 @@
                 <img src="<?= PUBLIC_IMAGES . 'user2-160x160.jpg' ?>" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info d-flex justify-content-between w-100">
-                <a href="#" class="d-block"><?= Session::get('user'); ?></a>
-                <a href="#"><span class="fa-solid fa-right-from-bracket fa-lg ml-4"></span></a>
+                <a href="<?= Router::url('admin') ?>" class="d-block"><?= Session::get('user'); ?></a>
+                <a href="<?= Router::url(route: 'logout') ?>"><span class="fa-solid fa-right-from-bracket fa-lg ml-4"></span></a>
             </div>
         </div>
 
@@ -24,7 +24,7 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="<?= Router::url('admin') ?>" class="nav-link">
                         <i class="nav-icon fa-solid fa-gauge"></i>
                         <p>
                             Dashboard
@@ -32,7 +32,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="../kanban.html" class="nav-link">
+                    <a href="<?= Router::url('admin/users') ?>" class="nav-link">
                         <i class="nav-icon fas fa-user"></i>
                         <p>
                             Users
@@ -40,7 +40,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="../kanban.html" class="nav-link">
+                    <a href="<?= Router::url('admin/articles') ?>" class="nav-link">
                         <i class="nav-icon fas fa-columns"></i>
                         <p>
                             Articles

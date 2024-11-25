@@ -8,7 +8,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="<?= Router::url('admin') ?>">Home</a></li>
                         <li class="breadcrumb-item active"><?= $name ?></li>
                     </ol>
                 </div>
@@ -30,7 +30,7 @@
                         <!-- /.card-header -->
                         <!-- form start -->
                         <?php if (!isset($article)): ?>
-                            <form action="<?= BASE_URL . 'admin/articles/store' ?>" method="post">
+                            <form action="<?= Router::url('admin/articles/store') ?>" method="post">
                                 <div class="card-body">
                                     <input type="hidden" name="userId" value="<?= $userId ?>">
                                     <div class="form-group">
@@ -49,7 +49,7 @@
                                 </div>
                             </form>
                         <?php else: ?>
-                            <form action="<?= BASE_URL . 'admin/articles/update' ?>" method="post">
+                            <form action="<?= Router::url('admin/articles/update') ?>" method="post">
                                 <div class="card-body">
                                     <input type="hidden" name="id" value="<?= $article['id'] ?>">
                                     <div class="form-group">
