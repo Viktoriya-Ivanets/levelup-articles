@@ -35,22 +35,21 @@ class UserController extends Controller
      */
     public function store(): void
     {
-        $data = [
-            'login' => $_POST['login'] ?? null,
-            'password' => $_POST['password'] ?? null
-        ];
+        extract(Helpers::getPostData(['login', 'password', 'password_confirm']));
 
-        if ($data['password'] !== $_POST['password_confirm']) {
+        if ($password !== $password_confirm) {
             echo 'Passwords do not match';
             return;
         }
 
-        $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+        $data = [
+            'login' => $login,
+            'password' => password_hash($password, PASSWORD_DEFAULT),
+            'created_at' => Helpers::convertToUTC(date('Y-m-d H:i:s')),
+            'updated_at' => Helpers::convertToUTC(date('Y-m-d H:i:s'))
+        ];
 
         $userModel = new User();
-
-        $data['created_at'] = $data['updated_at'] = Helpers::convertToUTC(date('Y-m-d H:i:s'));
-
         $success = $userModel->create($data);
 
         if ($success) {
@@ -59,6 +58,7 @@ class UserController extends Controller
             echo 'User not created';
         }
     }
+
 
     /**
      * Renders a view with a form for updating an existing user.
@@ -81,7 +81,8 @@ class UserController extends Controller
      */
     public function update(): void
     {
-        $userId = $_POST['userId'];
+        extract(Helpers::getPostData(['userId', 'login', 'password', 'passwordConfirm', 'oldPassword']));
+
         $userModel = new User();
 
         $existingUser = $userModel->getById($userId);
@@ -90,28 +91,26 @@ class UserController extends Controller
             exit();
         }
 
-        $data = [
-            'login' => $_POST['login'] ?? $existingUser['login'],
-        ];
-
-        $newPassword = $_POST['password'] ?? null;
-        $confirmPassword = $_POST['passwordConfirm'] ?? null;
-        if ($newPassword) {
-            if ($newPassword !== $confirmPassword) {
+        if ($password) {
+            if ($password !== $passwordConfirm) {
                 echo 'Passwords do not match';
                 exit();
             }
 
-            $oldPassword = $_POST['oldPassword'] ?? '';
             if (!password_verify($oldPassword, $existingUser['password'])) {
                 echo 'Old password is incorrect';
                 exit();
             }
 
-            $data['password'] = password_hash($newPassword, PASSWORD_DEFAULT);
+            $newPassword = password_hash($password, PASSWORD_DEFAULT);
         }
 
-        $data['updated_at'] = Helpers::convertToUTC(date('Y-m-d H:i:s'));
+        $data = [
+            'login' => $login ?? $existingUser['login'],
+            'password' => $newPassword ?? $existingUser['password'],
+            'updated_at' => Helpers::convertToUTC(date('Y-m-d H:i:s')),
+        ];
+
         $success = $userModel->update($userId, $data);
 
         if ($success) {
@@ -120,6 +119,7 @@ class UserController extends Controller
             echo 'User not updated';
         }
     }
+
 
     /**
      * Deletes a user from the database.

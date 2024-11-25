@@ -9,8 +9,7 @@ class AuthController extends Controller
     public function login(): never
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $login = $_POST['login'] ?? '';
-            $password = $_POST['password'] ?? '';
+            extract(Helpers::getPostData(['login', 'password']));
 
             $userModel = new User();
             $user = $userModel->findUserByLogin($login);

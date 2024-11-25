@@ -76,15 +76,17 @@ class ArticleController extends Controller
      */
     public function store(): void
     {
+        extract(Helpers::getPostData(['title', 'content', 'userId']));
+
         $data = [
-            'title' => $_POST['title'] ?? null,
-            'content' => $_POST['content'] ?? null,
-            'user_id' => $_POST['userId'] ?? null
+            'title' => $title,
+            'content' => $content,
+            'user_id' => $userId,
+            'created_at' => Helpers::convertToUTC(date('Y-m-d H:i:s')),
+            'updated_at' => Helpers::convertToUTC(date('Y-m-d H:i:s')),
         ];
 
         $articleModel = new Article();
-
-        $data['created_at'] = $data['updated_at'] = Helpers::convertToUTC(date('Y-m-d H:i:s'));
 
         $success = $articleModel->create($data);
 
@@ -116,9 +118,8 @@ class ArticleController extends Controller
      */
     public function update(): void
     {
-        $id = $_POST['id'];
+        extract(Helpers::getPostData(['id', 'title', 'content']));
         $articleModel = new Article();
-
         $existingArticle = $articleModel->getById($id);
         if (!$existingArticle) {
             echo 'Article not found';
@@ -126,11 +127,11 @@ class ArticleController extends Controller
         }
 
         $data = [
-            'title' => $_POST['title'] ?? $existingArticle['title'],
-            'content' => $_POST['content'] ?? $existingArticle['content'],
+            'title' => $title ?? $existingArticle['title'],
+            'content' => $content ?? $existingArticle['content'],
+            'updated_at' => Helpers::convertToUTC(date('Y-m-d H:i:s')),
         ];
 
-        $data['updated_at'] = Helpers::convertToUTC(date('Y-m-d H:i:s'));
         $success = $articleModel->update($id, $data);
 
         if ($success) {
