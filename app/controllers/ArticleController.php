@@ -66,6 +66,7 @@ class ArticleController extends Controller
     {
         $userModel = new User();
         $user = $userModel->findUserByLogin(Session::get('user'));
+
         $this->view('admin', 'default', 'article_form', ['name' => 'Add article', 'userId' => $user['id']]);
     }
 
@@ -77,6 +78,21 @@ class ArticleController extends Controller
     public function store(): void
     {
         extract(Helpers::getPostData(['title', 'content', 'userId']));
+        $errors = Validators::validateArticleStoreInput($userId, $title, $content);
+
+        if ($errors) {
+            $this->view(
+                'admin',
+                'default',
+                'article_form',
+                [
+                    'name' => 'Add article',
+                    'userId' => $userId,
+                    'errors' => $errors,
+                    'oldInput' => ['title' => $title, 'content' => $content]
+                ]
+            );
+        }
 
         $data = [
             'title' => $title,
@@ -88,13 +104,11 @@ class ArticleController extends Controller
 
         $articleModel = new Article();
 
-        $success = $articleModel->create($data);
-
-        if ($success) {
-            Router::redirect('admin/articles');
-        } else {
-            echo 'Article not created';
+        if (!$articleModel->create($data)) {
+            throw new DatabaseException("Article not created", 200, null, 'Something went wrong during article creating, try again later');
         }
+
+        Router::redirect('admin/articles');
     }
 
     /**
@@ -119,12 +133,23 @@ class ArticleController extends Controller
     public function update(): void
     {
         extract(Helpers::getPostData(['id', 'title', 'content']));
+        $errors = Validators::validateArticleUpdateInput($id, $title, $content);
+
+        if ($errors) {
+            $this->view(
+                'admin',
+                'default',
+                'article_form',
+                [
+                    'name' => 'Add article',
+                    'errors' => $errors,
+                    'article' => ['id' => $id, 'title' => $title, 'content' => $content]
+                ]
+            );
+        }
+
         $articleModel = new Article();
         $existingArticle = $articleModel->getById($id);
-        if (!$existingArticle) {
-            echo 'Article not found';
-            exit();
-        }
 
         $data = [
             'title' => $title ?? $existingArticle['title'],
@@ -132,13 +157,11 @@ class ArticleController extends Controller
             'updated_at' => Helpers::convertToUTC(date('Y-m-d H:i:s')),
         ];
 
-        $success = $articleModel->update($id, $data);
-
-        if ($success) {
-            Router::redirect('admin/articles');
-        } else {
-            echo 'Article not updated';
+        if (!$articleModel->update($id, $data)) {
+            throw new DatabaseException("Article not update", 200, null, 'Something went wrong during article updating, try again later');
         }
+
+        Router::redirect('admin/articles');
     }
 
     /**
