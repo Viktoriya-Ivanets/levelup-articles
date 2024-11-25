@@ -32,7 +32,7 @@
                         <?php if (!isset($article)): ?>
                             <form action="<?= BASE_URL . 'admin/articles/store' ?>" method="post">
                                 <div class="card-body">
-                                    <input type="hidden" name="userId" value="14">
+                                    <input type="hidden" name="userId" value="<?= $userId ?>">
                                     <div class="form-group">
                                         <label for="title">Title</label>
                                         <input type="text" name="title" class="form-control" id="title" placeholder="Enter article title">

@@ -58,7 +58,9 @@ class ArticleController extends Controller
      */
     public function create(): never
     {
-        $this->view('admin', 'default', 'article_form', ['name' => 'Add article']);
+        $userModel = new User();
+        $user = $userModel->findUserByLogin(Session::get('user'));
+        $this->view('admin', 'default', 'article_form', ['name' => 'Add article', 'userId' => $user['id']]);
     }
 
     /**
