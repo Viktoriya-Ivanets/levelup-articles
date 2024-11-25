@@ -21,8 +21,7 @@ class AuthController extends Controller
                 Session::storeSessionToken($user['id'], $token);
                 Session::set('token', $token);
                 Session::set('user', $login);
-                header('Location: ' . BASE_URL . 'admin');
-                exit();
+                Router::redirect('admin');
             } else {
                 $error = 'Incorrect login or password.';
                 $this->view('admin', 'login', null, ['error' => $error]);
@@ -53,7 +52,6 @@ class AuthController extends Controller
         }
 
         Session::destroy();
-        header('Location: ' . BASE_URL . 'login');
-        exit();
+        Router::redirect('login');
     }
 }

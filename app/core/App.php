@@ -14,8 +14,7 @@ class App
         if (str_contains($_SERVER['REQUEST_URI'], 'admin')) {
             $token = Session::get('token');
             if (!$token || !Session::isValidSessionToken($token)) {
-                header('Location: ' . BASE_URL . 'login');
-                exit();
+                Router::redirect('login');
             }
         }
 

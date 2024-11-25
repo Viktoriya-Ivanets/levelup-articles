@@ -47,8 +47,7 @@ class UserController extends Controller
         $success = $userModel->create($data);
 
         if ($success) {
-            header('Location: ' . BASE_URL . 'admin/users');
-            exit();
+            Router::redirect('admin/users');
         } else {
             echo 'User not created';
         }
@@ -108,8 +107,7 @@ class UserController extends Controller
         $success = $userModel->update($userId, $data);
 
         if ($success) {
-            header('Location: ' . BASE_URL . 'admin/users');
-            exit();
+            Router::redirect('admin/users');
         } else {
             echo 'User not updated';
         }
@@ -133,8 +131,7 @@ class UserController extends Controller
 
         $success = $userModel->delete($existingUser['id']);
         if ($success) {
-            header('Location: ' . BASE_URL . 'admin/users');
-            exit();
+            Router::redirect('admin/users');
         } else {
             echo 'User not delete';
         }

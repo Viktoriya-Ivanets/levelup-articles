@@ -80,8 +80,7 @@ class ArticleController extends Controller
         $success = $articleModel->create($data);
 
         if ($success) {
-            header('Location: ' . BASE_URL . 'admin/articles');
-            exit();
+            Router::redirect('admin/articles');
         } else {
             echo 'Article not created';
         }
@@ -125,8 +124,7 @@ class ArticleController extends Controller
         $success = $articleModel->update($id, $data);
 
         if ($success) {
-            header('Location: ' . BASE_URL . 'admin/articles');
-            exit();
+            Router::redirect('admin/articles');
         } else {
             echo 'Article not updated';
         }
@@ -150,8 +148,7 @@ class ArticleController extends Controller
 
         $success = $articleModel->delete($existingArticle['id']);
         if ($success) {
-            header('Location: ' . BASE_URL . 'admin/articles');
-            exit();
+            Router::redirect('admin/articles');
         } else {
             echo 'Article not delete';
         }
