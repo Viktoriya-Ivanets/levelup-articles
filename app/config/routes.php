@@ -15,4 +15,5 @@ Router::add('admin/users/edit/(\d+)', ['controller' => 'User', 'action' => 'edit
 Router::add('admin/users', ['controller' => 'User', 'action' => 'index']);
 Router::add('admin', ['controller' => 'Auth', 'action' => 'welcome']);
 Router::add('login', ['controller' => 'Auth', 'action' => 'login']);
+Router::add('logout', ['controller' => 'Auth', 'action' => 'logout']);
 Router::add('', ['controller' => 'Article', 'action' => 'clientIndex']);
