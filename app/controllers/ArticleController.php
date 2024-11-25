@@ -14,6 +14,8 @@ class ArticleController extends Controller
 
         foreach ($articles as &$article) {
             $article['user'] = $articleModel->getUserLoginByArticleId($article['id']);
+            $article['created_at'] = Helpers::convertFromUTC($article['created_at']);
+            $article['updated_at'] = Helpers::convertFromUTC($article['updated_at']);
         }
         unset($article);
         $this->view('client', 'default', 'index', ['articles' => $articles]);
@@ -31,6 +33,8 @@ class ArticleController extends Controller
 
         foreach ($articles as &$article) {
             $article['user'] = $articleModel->getUserLoginByArticleId($article['id']);
+            $article['created_at'] = Helpers::convertFromUTC($article['created_at']);
+            $article['updated_at'] = Helpers::convertFromUTC($article['updated_at']);
         }
         unset($article);
         $this->view('admin', 'default', 'articles', ['articles' => $articles]);
@@ -48,6 +52,8 @@ class ArticleController extends Controller
         $articleModel = new Article();
         $articleById = $articleModel->getById($params['id']);
         $articleById['user'] = $articleModel->getUserLoginByArticleId($params['id']);
+        $articleById['created_at'] = Helpers::convertFromUTC($articleById['created_at']);
+        $articleById['updated_at'] = Helpers::convertFromUTC($articleById['updated_at']);
         $this->view('client', 'default', 'article', ['article' => $articleById]);
     }
 
@@ -77,6 +83,9 @@ class ArticleController extends Controller
         ];
 
         $articleModel = new Article();
+
+        $data['created_at'] = $data['updated_at'] = Helpers::convertToUTC(date('Y-m-d H:i:s'));
+
         $success = $articleModel->create($data);
 
         if ($success) {
@@ -121,6 +130,7 @@ class ArticleController extends Controller
             'content' => $_POST['content'] ?? $existingArticle['content'],
         ];
 
+        $data['updated_at'] = Helpers::convertToUTC(date('Y-m-d H:i:s'));
         $success = $articleModel->update($id, $data);
 
         if ($success) {

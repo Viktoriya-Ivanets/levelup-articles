@@ -11,6 +11,10 @@ class UserController extends Controller
     {
         $userModel = new User();
         $users = $userModel->getAll();
+        foreach ($users as &$user) {
+            $user['created_at'] = Helpers::convertFromUTC($user['created_at']);
+            $user['updated_at'] = Helpers::convertFromUTC($user['updated_at']);
+        }
         $this->view('admin', 'default', 'users', ['users' => $users]);
     }
 
@@ -44,6 +48,9 @@ class UserController extends Controller
         $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 
         $userModel = new User();
+
+        $data['created_at'] = $data['updated_at'] = Helpers::convertToUTC(date('Y-m-d H:i:s'));
+
         $success = $userModel->create($data);
 
         if ($success) {
@@ -104,6 +111,7 @@ class UserController extends Controller
             $data['password'] = password_hash($newPassword, PASSWORD_DEFAULT);
         }
 
+        $data['updated_at'] = Helpers::convertToUTC(date('Y-m-d H:i:s'));
         $success = $userModel->update($userId, $data);
 
         if ($success) {
