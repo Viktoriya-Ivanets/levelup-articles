@@ -22,7 +22,7 @@
             <h1 class="card-header text-center">Article<b>Admin</b></h1>
             <div class="card-body">
                 <p class="login-box-msg">Login to Administration Panel</p>
-                <form action="#" method="post">
+                <form action="<?= BASE_URL . 'login' ?>" method="post">
                     <div class="input-group mb-3">
                         <input type="text" name="login" class="form-control" placeholder="Login">
                         <div class="input-group-append">
@@ -39,6 +39,9 @@
                             </div>
                         </div>
                     </div>
+                    <?php if (!empty($error)): ?>
+                        <div class="alert alert-danger"><?= $error ?></div>
+                    <?php endif; ?>
                     <div class="row">
                         <div class="col-12">
                             <button type="submit" class="btn btn-primary btn-block">Login</button>

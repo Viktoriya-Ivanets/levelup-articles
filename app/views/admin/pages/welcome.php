@@ -22,7 +22,7 @@
         <div class="row mt-3">
             <div class="col-lg-12">
                 <div class="card card-primary card-outline m-2">
-                    <h2 class="m-5 text-center">Welcome, Alexandr Pierce</h2>
+                    <h2 class="m-5 text-center">Welcome, <?= Session::get('user'); ?></h2>
                 </div>
             </div>
         </div>

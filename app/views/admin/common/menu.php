@@ -12,8 +12,8 @@
             <div class="image">
                 <img src="<?= PUBLIC_IMAGES . 'user2-160x160.jpg' ?>" class="img-circle elevation-2" alt="User Image">
             </div>
-            <div class="info d-flex">
-                <a href="#" class="d-block">Alexander Pierce</a>
+            <div class="info d-flex justify-content-between w-100">
+                <a href="#" class="d-block"><?= Session::get('user'); ?></a>
                 <a href="#"><span class="fa-solid fa-right-from-bracket fa-lg ml-4"></span></a>
             </div>
         </div>
